@@ -135,30 +135,33 @@ a:focus {
 	color: #2563eb;
 }
 
-/* 4. Blog Feed Grid Layout */
-.blog .site-main,
-.archive .site-main {
+/* 4. Global Core Feed Grid Layout (Fixed Class Target) */
+.site-main {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 	gap: 2rem;
-	padding-top: 2rem;
+	width: 100%;
 }
 
 /* Individual Post Cards */
-.archive-post {
+.archive-post, 
+article {
 	background-color: #ffffff;
 	border: 1px solid #e2e8f0;
-	border-radius: 8px;
-	overflow: hidden;
+	border-radius: 12px;
+	padding: 2rem;
+	box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
 	display: flex;
 	flex-direction: column;
-	transition: transform 0.25s ease, box-shadow 0.25s ease;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.archive-post:hover {
-	transform: translateY(-4px);
-	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+.archive-post:hover,
+article:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
 }
+
 
 .archive-post .post-thumbnail {
 	position: relative;
@@ -284,12 +287,11 @@ a:focus {
 	margin-right: 1rem;
 }
 
-/* 6. Footer Layout */
+/* 6. Footer Layout Styling */
 .site-footer {
 	border-top: 1px solid #e2e8f0;
 	margin-top: 5rem;
-	padding-top: 2rem;
-	padding-bottom: 2rem;
+	background-color: #ffffff;
 }
 
 .site-footer .site-info {
@@ -298,9 +300,9 @@ a:focus {
 	align-items: center;
 	font-size: 0.875rem;
 	color: #64748b;
-	flex-wrap: wrap;
-	gap: 1rem;
 }
+
+
 
 /* 7. Responsive Adaptations */
 @media (max-width: 768px) {
