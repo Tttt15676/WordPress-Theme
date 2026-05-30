@@ -7,7 +7,7 @@
 }
 
 body {
-	background-color: #f8fafc;
+	background-color: #f8fafc !important; /* Force clean slate canvas background */
 	color: #1e293b;
 	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 	font-size: 1rem;
@@ -15,7 +15,6 @@ body {
 	margin: 0;
 	padding: 0;
 	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 }
 
 /* Typography & Headings */
@@ -28,9 +27,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-	color: #1e293b;
+	color: #2563eb; /* Change default link color to blue */
 	text-decoration: none;
 	transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+	text-decoration: underline;
 }
 
 a:hover,
