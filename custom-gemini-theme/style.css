@@ -1,10 +1,339 @@
-Theme Name: Custom Gemini Theme
-Theme URI: https://github.com
-Author: Tameka Wylie 
-Author URI: https://github.com/Tttt15676
-Description: A minimalist, high-performance WordPress theme designed for clean layout and modern block compatibility.
-Version: 1.0.0
-License: GNU General Public License v2 or later
-License URI: http://gnu.org
-Text Domain: custom-gemini-theme
-Tags: one-column, custom-colors, translation-ready, block-styles, accessibility-ready
+
+/* 1. Global Reset & Base Styles */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #f8fafc;
+	color: #1e293b;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	font-size: 1rem;
+	line-height: 1.6;
+	margin: 0;
+	padding: 0;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography & Headings */
+h1, h2, h3, h4, h5, h6 {
+	color: #0f172a;
+	font-weight: 700;
+	line-height: 1.25;
+	margin-top: 0;
+	margin-bottom: 0.5em;
+}
+
+a {
+	color: #1e293b;
+	text-decoration: none;
+	transition: color 0.2s ease-in-out;
+}
+
+a:hover,
+a:focus {
+	color: #2563eb;
+}
+
+/* Skip link styling for accessibility */
+.skip-link {
+	position: absolute;
+	top: -5rem;
+	left: 1rem;
+	background: #2563eb;
+	color: #ffffff;
+	padding: 0.5rem 1rem;
+	z-index: 9999;
+	border-radius: 4px;
+	transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+	top: 1rem;
+}
+
+/* Screen reader utility */
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
+}
+
+/* 2. Container Layout structures */
+.site-header,
+.site-content,
+.site-footer {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 1.5rem;
+	width: 100%;
+}
+
+/* 3. Header Navigation Design */
+.site-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #e2e8f0;
+	background-color: #ffffff;
+	padding-top: 1.25rem;
+	padding-bottom: 1.25rem;
+}
+
+.site-branding .site-title {
+	font-size: 1.35rem;
+	font-weight: 800;
+	margin: 0;
+	letter-spacing: -0.025em;
+}
+
+.site-branding .site-title a {
+	color: #0f172a;
+}
+
+.site-branding .site-title a:hover {
+	color: #2563eb;
+}
+
+.site-branding .site-description {
+	font-size: 0.825rem;
+	color: #64748b;
+	margin: 0.25rem 0 0 0;
+}
+
+/* Navigation List formatting */
+.menu-toggle {
+	display: none; /* Hidden by default; standard responsive CSS wrap is active */
+}
+
+.main-navigation ul {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	gap: 1.5rem;
+}
+
+.main-navigation ul li a {
+	font-weight: 500;
+	font-size: 0.95rem;
+	color: #475569;
+	padding: 0.5rem 0;
+	position: relative;
+}
+
+.main-navigation ul li a:hover,
+.main-navigation ul li a:focus {
+	color: #2563eb;
+}
+
+/* 4. Blog Feed Grid Layout */
+.blog .site-main,
+.archive .site-main {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+	gap: 2rem;
+	padding-top: 2rem;
+}
+
+/* Individual Post Cards */
+.archive-post {
+	background-color: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 8px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.archive-post:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+}
+
+.archive-post .post-thumbnail {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+	background-color: #f1f5f9;
+}
+
+.archive-post .post-thumbnail img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	transition: transform 0.3s ease;
+}
+
+.archive-post:hover .post-thumbnail img {
+	transform: scale(1.03);
+}
+
+.archive-post .entry-header {
+	padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+}
+
+.archive-post .entry-title {
+	font-size: 1.2rem;
+	margin: 0;
+	font-weight: 700;
+	line-height: 1.4;
+}
+
+.archive-post .entry-title a {
+	color: #0f172a;
+}
+
+.archive-post .entry-title a:hover {
+	color: #2563eb;
+}
+
+.archive-post .entry-summary {
+	padding: 0 1.5rem 1.5rem 1.5rem;
+	font-size: 0.925rem;
+	color: #475569;
+	flex-grow: 1;
+}
+
+.archive-post .entry-summary p {
+	margin: 0;
+}
+
+/* Pagination container spacing */
+.navigation.pagination,
+.posts-navigation {
+	grid-column: 1 / -1;
+	display: flex;
+	justify-content: space-between;
+	padding: 2rem 0;
+	border-top: 1px solid #e2e8f0;
+	margin-top: 1.5rem;
+}
+
+.posts-navigation a {
+	font-weight: 600;
+	color: #2563eb;
+}
+
+/* 5. Single Post & Page Specific Layouts */
+.single .site-main,
+.page .site-main {
+	max-width: 800px;
+	margin: 2rem auto 0;
+	background-color: #ffffff;
+	padding: 2.5rem;
+	border-radius: 8px;
+	border: 1px solid #e2e8f0;
+}
+
+.single .entry-meta {
+	font-size: 0.875rem;
+	color: #64748b;
+	margin-bottom: 1.5rem;
+}
+
+.single .entry-meta .byline {
+	margin-left: 0.5rem;
+}
+
+.single .post-thumbnail,
+.page .post-thumbnail {
+	margin-bottom: 2rem;
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+.single .post-thumbnail img,
+.page .post-thumbnail img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.entry-content {
+	font-size: 1.05rem;
+	color: #334155;
+}
+
+.entry-content p {
+	margin-top: 0;
+	margin-bottom: 1.5rem;
+}
+
+.entry-footer {
+	margin-top: 3rem;
+	padding-top: 1.5rem;
+	border-top: 1px solid #e2e8f0;
+	font-size: 0.875rem;
+	color: #64748b;
+}
+
+.entry-footer span {
+	display: inline-block;
+	margin-right: 1rem;
+}
+
+/* 6. Footer Layout */
+.site-footer {
+	border-top: 1px solid #e2e8f0;
+	margin-top: 5rem;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
+
+.site-footer .site-info {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 0.875rem;
+	color: #64748b;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+/* 7. Responsive Adaptations */
+@media (max-width: 768px) {
+	/* Header adjustment for smaller screens */
+	.site-header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1.25rem;
+		padding: 1rem;
+	}
+
+	.main-navigation ul {
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+
+	/* Adjust content containers margins */
+	.site-content {
+		padding: 1rem;
+	}
+
+	/* Single post content padding adaptation */
+	.single .site-main,
+	.page .site-main {
+		padding: 1.5rem;
+		margin-top: 1rem;
+	}
+
+	/* Footer stacks in single column */
+	.site-footer .site-info {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+  }
