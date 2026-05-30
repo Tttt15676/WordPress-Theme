@@ -78,7 +78,7 @@ a:focus {
 .site-footer {
 	max-width: 1200px;
 	margin: 0 auto;
-	padding: 1.5rem;
+	padding: 2rem 1.5rem;
 	width: 100%;
 }
 
@@ -89,30 +89,25 @@ a:focus {
 	align-items: center;
 	border-bottom: 1px solid #e2e8f0;
 	background-color: #ffffff;
-	padding-top: 1.25rem;
-	padding-bottom: 1.25rem;
+	margin-bottom: 2rem;
 }
 
 .site-branding .site-title {
-	font-size: 1.35rem;
+	font-size: 1.75rem;
 	font-weight: 800;
 	margin: 0;
-	letter-spacing: -0.025em;
 }
 
 .site-branding .site-title a {
 	color: #0f172a;
 }
 
-.site-branding .site-title a:hover {
-	color: #2563eb;
+.site-branding .site-description {
+	font-size: 0.875rem;
+	color: #64748b;
+	margin-top: 0.25rem;
 }
 
-.site-branding .site-description {
-	font-size: 0.825rem;
-	color: #64748b;
-	margin: 0.25rem 0 0 0;
-}
 
 /* Navigation List formatting */
 .menu-toggle {
